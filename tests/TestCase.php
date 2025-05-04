@@ -1,19 +1,25 @@
 <?php
 
-namespace Vendor\PackageName\Tests;
+namespace Tests;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Vendor\PackageName\PackageNameServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use RefreshDatabase;
+    use WithWorkbench;
+
     protected function setUp(): void
     {
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Vendor\\PackageName\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Database\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -26,12 +32,13 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
+        tap($app['config'], function (Repository $config) {
+            $config->set('database.default', 'testing');
+        });
 
         /*
-         foreach (\Illuminate\Support\Facades\File::allFiles(__DIR__ . '/database/migrations') as $migration) {
-            (include $migration->getRealPath())->up();
-         }
-         */
+        $migration = include __DIR__.'/../database/migrations/create_package_name_table.php';
+        $migration->up();
+        */
     }
 }
