@@ -2,11 +2,26 @@
 
 namespace Vendor\PackageName;
 
+use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Foundation\CachesRoutes;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Vendor\PackageName\Commands\PackageNameCommand;
 
 class PackageNameServiceProvider extends ServiceProvider
 {
+    /**
+     *  All of the Package event / listener mappings.
+     *
+     * @var array<class-string, array<class-string>>
+     */
+    protected array $events = [
+        // Events\Event::class => [
+        //     Listeners\Listener::class,
+        // ],
+    ];
+
     /**
      * Register services.
      */
@@ -22,18 +37,9 @@ class PackageNameServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-
-        // $this->loadTranslationsFrom(__DIR__.'/../lang', 'package-name');
-        // $this->loadJsonTranslationsFrom(__DIR__.'/../lang');
-        // $this->publishes([
-        //     __DIR__.'/../lang' => $this->app->langPath('vendor/package-name'),
-        // ]);
-
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'package-name');
-        // $this->publishes([
-        //     __DIR__.'/../resources/views' => resource_path('views/vendor/package-name'),
-        // ]);
+        $this->registerEvents();
+        $this->registerRoutes();
+        $this->registerResources();
 
         if ($this->app->runningInConsole()) {
             $this->registerPublications();
@@ -43,11 +49,75 @@ class PackageNameServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Register the Package job events.
+     */
+    private function registerEvents(): void
+    {
+        $events = $this->app->make(Dispatcher::class);
+
+        foreach ($this->events as $event => $listeners) {
+            foreach ($listeners as $listener) {
+                $events->listen($event, $listener);
+            }
+        }
+    }
+
+    /**
+     * Register the Package routes.
+     */
+    private function registerRoutes(): void
+    {
+        if ($this->app instanceof CachesRoutes && $this->app->routesAreCached()) {
+            return;
+        }
+
+        Route::group([
+            'domain' => config('package-name.domain', null),
+            'prefix' => config('package-name.path'),
+            'namespace' => 'Vendor\PackageName\Http\Controllers',
+            'middleware' => config('package-name.middleware', 'web'),
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
+
+        Route::group([
+            'domain' => config('package-name.domain', null),
+            'prefix' => Str::finish(config('package-name.path', ''), '/').'api',
+            'namespace' => 'Vendor\PackageName\Http\Controllers\Api',
+            'middleware' => config('package-name.api_middleware', 'api'),
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        });
+    }
+
+    /**
+     * Register the Package resources.
+     */
+    private function registerResources(): void
+    {
+        // $this->loadTranslationsFrom(__DIR__.'/../lang', 'package-name');
+        // $this->loadJsonTranslationsFrom(__DIR__.'/../lang');
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'package-name');
+    }
+
+    /**
+     * Setup the resource publishing groups for Package.
+     */
     private function registerPublications(): void
     {
         $this->publishes([
             __DIR__.'/../config/package-name.php' => $this->app->configPath('package-name.php'),
         ], ['package-name', 'package-name-config']);
+
+        //     $this->publishes([
+        //         __DIR__.'/../lang' => $this->app->langPath('vendor/package-name'),
+        //     ]);
+
+        //     $this->publishes([
+        //         __DIR__.'/../resources/views' => resource_path('views/vendor/package-name'),
+        //     ]);
     }
 
     private function registerMigrations(): void
@@ -63,9 +133,12 @@ class PackageNameServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../dist' => public_path('vendor/package-name'),
-        ], 'public');
+        ], [/* 'public', */ 'package-name', 'package-name-assets']);
     }
 
+    /**
+     * Register the Package Artisan commands.
+     */
     private function registerCommands(): void
     {
         $this->commands([

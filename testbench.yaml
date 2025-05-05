@@ -28,6 +28,7 @@ workbench:
     - migrate-fresh
   assets:
     - laravel-assets
+    - package-name-assets
   sync:
     - from: storage
       to: workbench/storage
