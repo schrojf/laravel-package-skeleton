@@ -1,3 +1,7 @@
+> [!NOTE]  
+> You are now viewing the unmodified `spatie/package-skeleton-laravel`, which serves as the inspiration for my customized skeleton.
+> Switch to a specific branch, such as `9.x` or `10.x`, to see my version of the skeleton configured for the corresponding minimum Laravel framework version.
+
 # This is my package package-name
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vendor/package-name.svg?style=flat-square)](https://packagist.org/packages/vendor/package-name)
