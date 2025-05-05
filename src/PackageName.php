@@ -16,7 +16,7 @@ class PackageName
         $css = __DIR__.'/../dist/package-name.css';
 
         if (($contents = @file_get_contents($css)) === false) {
-            throw new RuntimeException("Unable to load Package Name app CSS path [$css].");
+            throw new RuntimeException("Unable to load Package Name app CSS path [{$css}].");
         }
 
         return "<style>{$contents}</style>".PHP_EOL;
