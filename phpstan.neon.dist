@@ -4,4 +4,4 @@ parameters:
     - routes
     - src
 
-  level: 0
+  level: 5
