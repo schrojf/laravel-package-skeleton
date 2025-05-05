@@ -1,4 +1,6 @@
-@use('Vendor\PackageName\Facades\PackageName')
+@php
+    use \Vendor\PackageName\Facades\PackageName;
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
