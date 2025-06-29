@@ -4,12 +4,12 @@
 > Remove everything you don't need for your package, commit your changes to your own remote repo, run the tests, and once everything is green, you're ready to start building your awesome new package.
 > The branch name indicates the minimum Laravel version supported. For example, the `10.x` branch supports Laravel 10, 11, and 12.
 
-# Package Name
+# PackageName
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/vendor/package-name.svg?style=flat-square)](https://packagist.org/packages/vendor/package-name)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/vendor/package-name/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/vendor/package-name/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/vendor/package-name/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/vendor/package-name/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/vendor/package-name.svg?style=flat-square)](https://packagist.org/packages/vendor/package-name)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/vendor-name/package-name.svg?style=flat-square)](https://packagist.org/packages/vendor-name/package-name)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/vendor-name/package-name/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/vendor-name/package-name/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/vendor-name/package-name/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/vendor-name/package-name/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/vendor-name/package-name.svg?style=flat-square)](https://packagist.org/packages/vendor-name/package-name)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
@@ -18,7 +18,7 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 You can install the package via composer:
 
 ```bash
-composer require vendor/package-name
+composer require vendor-name/package-name
 ```
 
 You can publish and run the migrations with:
@@ -74,7 +74,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Forename Surname](https://github.com/vendor)
+- [Forename Surname](https://github.com/vendor-name)
 - [All Contributors](../../contributors)
 
 ## License

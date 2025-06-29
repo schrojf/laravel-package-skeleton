@@ -1,4 +1,4 @@
-@use('Vendor\PackageName\Facades\PackageName')
+@use('VendorName\PackageName\Facades\PackageName')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Package Name{{ config('app.name') ? ' - ' . config('app.name') : '' }}</title>
+    <title>PackageName{{ config('app.name') ? ' - ' . config('app.name') : '' }}</title>
 
     <!-- Style sheets -->
     {!! PackageName::css() !!}

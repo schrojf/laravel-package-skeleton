@@ -5,7 +5,7 @@ export default {
     plugins: [
         // TODO: Implement this in app.blade.php
         // legacy({
-        //     targets: ["defaults", "> 0.2% and not dead"],
+        //     targets: ["> 0.2%, last 2 versions, Firefox ESR, not dead"],
         // }),
     ],
     build: {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Vendor\PackageName\Facades;
+namespace VendorName\PackageName\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Vendor\PackageName\PackageName
+ * @see \VendorName\PackageName\PackageName
  */
 class PackageName extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Vendor\PackageName\PackageName::class;
+        return \VendorName\PackageName\PackageName::class;
     }
 }

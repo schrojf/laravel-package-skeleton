@@ -1,6 +1,6 @@
 <?php
 
-namespace Vendor\PackageName;
+namespace VendorName\PackageName;
 
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Js;
@@ -9,14 +9,14 @@ use RuntimeException;
 class PackageName
 {
     /**
-     * Return CSS for the Package Name app.
+     * Return CSS for the PackageName app.
      */
-    public function css(): string
+    public static function css(): string
     {
         $css = __DIR__.'/../dist/package-name.css';
 
         if (($contents = @file_get_contents($css)) === false) {
-            throw new RuntimeException("Unable to load Package Name app CSS path [{$css}].");
+            throw new RuntimeException("Unable to load PackageName app CSS path [{$css}].");
         }
 
         return "<style>{$contents}</style>".PHP_EOL;
@@ -25,17 +25,17 @@ class PackageName
     /**
      * Return the compiled JavaScript from the vendor directory.
      */
-    public function js(): string
+    public static function js(): string
     {
         if (($js = @file_get_contents(__DIR__.'/../dist/package-name.js')) === false) {
-            throw new RuntimeException('Unable to load the Package Name app JavaScript.');
+            throw new RuntimeException('Unable to load the PackageName app JavaScript.');
         }
 
-        $packageName = Js::from(static::scriptVariables());
+        $variables = Js::from(static::scriptVariables());
 
         return new HtmlString(<<<HTML
             <script type="module">
-                window.PackageName = {$packageName};
+                window.PackageName = {$variables};
                 {$js}
             </script>
             HTML);
