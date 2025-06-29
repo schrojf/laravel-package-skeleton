@@ -1,6 +1,6 @@
 <?php
 
-// config for Vendor/PackageName
+// config for VendorName/PackageName
 return [
 
     'ok' => true,

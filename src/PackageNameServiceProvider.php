@@ -1,13 +1,13 @@
 <?php
 
-namespace Vendor\PackageName;
+namespace VendorName\PackageName;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\CachesRoutes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Vendor\PackageName\Commands\PackageNameCommand;
+use VendorName\PackageName\Commands\PackageNameCommand;
 
 class PackageNameServiceProvider extends ServiceProvider
 {
@@ -75,7 +75,7 @@ class PackageNameServiceProvider extends ServiceProvider
         Route::group([
             'domain' => config('package-name.domain', null),
             'prefix' => config('package-name.path'),
-            'namespace' => 'Vendor\PackageName\Http\Controllers',
+            'namespace' => 'VendorName\PackageName\Http\Controllers',
             'middleware' => config('package-name.middleware', 'web'),
         ], function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
@@ -84,7 +84,7 @@ class PackageNameServiceProvider extends ServiceProvider
         Route::group([
             'domain' => config('package-name.domain', null),
             'prefix' => Str::finish(config('package-name.path', ''), '/').'api',
-            'namespace' => 'Vendor\PackageName\Http\Controllers\Api',
+            'namespace' => 'VendorName\PackageName\Http\Controllers\Api',
             'middleware' => config('package-name.api_middleware', 'api'),
         ], function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
@@ -122,6 +122,7 @@ class PackageNameServiceProvider extends ServiceProvider
 
     private function registerMigrations(): void
     {
+        // @phpstan-ignore-next-line
         $method = method_exists($this, 'publishesMigrations') ? 'publishesMigrations' : 'publishes';
 
         $this->{$method}([

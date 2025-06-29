@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Vendor\PackageName\PackageNameServiceProvider;
+use VendorName\PackageName\PackageNameServiceProvider;
 
 class TestCase extends Orchestra
 {

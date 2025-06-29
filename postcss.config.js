@@ -3,7 +3,7 @@ module.exports = {
         tailwindcss: {},
         autoprefixer: {},
         "postcss-preset-env": {
-            browsers: "defaults, > 0.2% and not dead",
+            browsers: "> 0.2%, last 2 versions, Firefox ESR, not dead",
         },
     },
 }
