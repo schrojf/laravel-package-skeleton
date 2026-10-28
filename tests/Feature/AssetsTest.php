@@ -121,3 +121,10 @@ test('app view renders inline tags unescaped', function () {
         ->assertSee('<style>', false)
         ->assertSee('<script type="module">', false);
 });
+
+test('workbench hello view renders the package assets', function () {
+    $this->get('/hello')
+        ->assertOk()
+        ->assertSee('<style>', false)
+        ->assertSee('<script type="module">', false);
+});
