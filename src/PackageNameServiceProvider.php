@@ -122,9 +122,7 @@ class PackageNameServiceProvider extends ServiceProvider
 
     private function registerMigrations(): void
     {
-        $method = method_exists($this, 'publishesMigrations') ? 'publishesMigrations' : 'publishes';
-
-        $this->{$method}([
+        $this->publishesMigrations([
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ], ['package-name', 'package-name-migrations']);
     }

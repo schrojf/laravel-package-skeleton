@@ -2,7 +2,7 @@
 > This is my opinionated Laravel package skeleton.
 > Start by cloning this repository and selecting the minimum supported version of the Laravel framework.
 > Remove everything you don't need for your package, commit your changes to your own remote repo, run the tests, and once everything is green, you're ready to start building your awesome new package.
-> The branch name indicates the minimum Laravel version supported. For example, the `10.x` branch supports Laravel 10, 11, and 12.
+> The branch name indicates the minimum Laravel version supported. For example, the `12.x` branch supports Laravel 12 and 13.
 
 # PackageName
 
