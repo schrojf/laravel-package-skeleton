@@ -1,5 +1,4 @@
 import laravel from "laravel-vite-plugin";
-import legacy from "@vitejs/plugin-legacy";
 import tailwindcss from "@tailwindcss/vite";
 
 /** @type {import('vite').UserConfig} */
@@ -15,10 +14,6 @@ export default {
             refresh: ["resources/views/**", "routes/**", "workbench/resources/views/**", "workbench/routes/**"],
         }),
         tailwindcss(),
-        // TODO: Implement this in app.blade.php
-        // legacy({
-        //     targets: ["> 0.2%, last 2 versions, Firefox ESR, not dead"],
-        // }),
     ],
     build: {
         outDir: "dist",
