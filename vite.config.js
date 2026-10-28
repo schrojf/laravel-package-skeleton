@@ -1,5 +1,6 @@
 import laravel from "laravel-vite-plugin";
 import legacy from "@vitejs/plugin-legacy";
+import tailwindcss from "@tailwindcss/vite";
 
 /** @type {import('vite').UserConfig} */
 export default {
@@ -13,6 +14,7 @@ export default {
             hotFile: "vite.hot",
             refresh: ["resources/views/**", "routes/**", "workbench/resources/views/**", "workbench/routes/**"],
         }),
+        tailwindcss(),
         // TODO: Implement this in app.blade.php
         // legacy({
         //     targets: ["> 0.2%, last 2 versions, Firefox ESR, not dead"],
@@ -21,7 +23,5 @@ export default {
     build: {
         outDir: "dist",
         assetsDir: "",
-        // Vite 6 defaults, so the CSS minifier doesn't emit syntax unsupported by the browsers in postcss.config.js
-        cssTarget: ["chrome87", "edge88", "firefox78", "safari14"],
     },
 };
