@@ -47,6 +47,14 @@ Optionally, you can publish the views using
 php artisan vendor:publish --tag="package-name-views"
 ```
 
+Optionally, you can publish the assets, so they are served as cacheable files instead of being inlined in the page:
+
+```bash
+php artisan vendor:publish --tag="package-name-assets"
+```
+
+The assets are also published with the `laravel-assets` tag, so the `post-update-cmd` script of a default Laravel application keeps them up-to-date. Outdated published assets are ignored in favour of the inlined assets.
+
 ## Usage
 
 ```php

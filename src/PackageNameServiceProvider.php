@@ -132,8 +132,8 @@ class PackageNameServiceProvider extends ServiceProvider
     private function registerAssets(): void
     {
         $this->publishes([
-            __DIR__.'/../dist' => public_path('vendor/package-name'),
-        ], [/* 'public', */ 'package-name', 'package-name-assets']);
+            __DIR__.'/../dist' => public_path(PackageName::BUILD_DIRECTORY),
+        ], ['laravel-assets', 'package-name', 'package-name-assets']);
     }
 
     /**
