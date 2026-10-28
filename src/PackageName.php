@@ -43,7 +43,8 @@ class PackageName
      */
     public static function js(): Htmlable
     {
-        $variables = Js::from(static::scriptVariables());
+        // Cast to an object, so empty variables are a JavaScript object rather than an array
+        $variables = Js::from((object) static::scriptVariables());
 
         $nonce = static::nonceAttribute();
 

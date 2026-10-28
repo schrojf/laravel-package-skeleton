@@ -48,7 +48,7 @@ test('js is inlined in a module script tag with script variables', function () {
     expect($js)->toBeInstanceOf(Htmlable::class)
         ->and($js->toHtml())
         ->toStartWith('<script type="module">')
-        ->toContain('window.PackageName = ')
+        ->toContain('window.PackageName = {};')
         ->toEndWith('</script>');
 });
 
