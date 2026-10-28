@@ -12,10 +12,10 @@
     <title>PackageName{{ config('app.name') ? ' - ' . config('app.name') : '' }}</title>
 
     <!-- Style sheets -->
-    {!! PackageName::css() !!}
+    {{ PackageName::css() }}
 
     <!-- JavaScript scripts -->
-    {!! PackageName::js() !!}
+    {{ PackageName::js() }}
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 font-sans antialiased">
     <div class="min-h-screen">
