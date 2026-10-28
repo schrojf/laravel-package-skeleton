@@ -1,5 +1,9 @@
+import aspectRatio from '@tailwindcss/aspect-ratio';
+import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     content: [
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.{js,ts,jsx,tsx}",
@@ -9,8 +13,8 @@ module.exports = {
         extend: {},
     },
     plugins: [
-        require('@tailwindcss/typography'),
-        require('@tailwindcss/forms'),
-        require('@tailwindcss/aspect-ratio'),
+        typography,
+        forms,
+        aspectRatio,
     ],
 }

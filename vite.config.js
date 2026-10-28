@@ -10,7 +10,9 @@ export default {
     ],
     build: {
         assetsDir: "",
-        rollupOptions: {
+        // Vite 6 defaults, so the CSS minifier doesn't emit syntax unsupported by the browsers in postcss.config.js
+        cssTarget: ["chrome87", "edge88", "firefox78", "safari14"],
+        rolldownOptions: {
             input: ["resources/js/package-name.js", "resources/css/package-name.css"],
             output: {
                 assetFileNames: "[name][extname]",
