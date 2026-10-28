@@ -122,7 +122,6 @@ class PackageNameServiceProvider extends ServiceProvider
 
     private function registerMigrations(): void
     {
-        // @phpstan-ignore-next-line
         $method = method_exists($this, 'publishesMigrations') ? 'publishesMigrations' : 'publishes';
 
         $this->{$method}([
